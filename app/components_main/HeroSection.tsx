@@ -3,6 +3,7 @@ import Link from "next/link";
 import Masonry from "../reactBitsComponents/Masonry";
 import { MapPin } from "lucide-react";
 import { externalLinks, siteConfig } from "../seo";
+import { assetPath } from "@/lib/assetPath";
 
 interface HeroPhoto {
   id: string;
@@ -15,8 +16,8 @@ interface HeroPhoto {
 export default function HeroSection({ items }: { items: HeroPhoto[] }) {
   const masonryItems = items.map((p) => ({
     id: p.id,
-    img: p.img_path,
-    url: p.url,
+    img: assetPath(p.img_path),
+    url: assetPath(p.url),
     height: p.height,
   }));
 
@@ -106,12 +107,12 @@ export default function HeroSection({ items }: { items: HeroPhoto[] }) {
           {items.slice(0, 8).map((item) => (
             <a
               key={item.id}
-              href={item.url}
+              href={assetPath(item.url)}
               aria-label="ColorStack at Montclair State highlight"
               className="flex-none snap-center"
             >
               <img
-                src={item.img_path}
+                src={assetPath(item.img_path)}
                 alt=""
                 className="h-52 w-auto max-w-[70vw] rounded-2xl object-contain"
                 draggable={false}

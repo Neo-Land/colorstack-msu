@@ -58,7 +58,7 @@ Other places with content you will want to personalize:
 The admin panel lets officers upload hero photos, edit the officer roster, and manage resource and opportunity cards. To enable it:
 
 1. Create a Supabase project and copy `.env.example` to `.env.local` with your URL and anon key.
-2. Create a user in Supabase Auth and set `ALLOWED_EMAIL` to that address.
+2. Create a user in Supabase Auth. Optionally set `NEXT_PUBLIC_ALLOWED_EMAIL` to that address as a UI-level gate.
 3. Create these public Storage buckets: `hero-photos`, `landing-logos`, `mission-photos`, `officer-images`, `program-images`, `resource-images`.
 4. Create these tables (all with `id uuid primary key default gen_random_uuid()` and `created_at timestamptz default now()`):
 
@@ -78,7 +78,15 @@ When any table is empty, the site falls back to the built-in content, so you can
 
 ## Deploy
 
-The easiest path is [Vercel](https://vercel.com/new): import the repo, add the three environment variables if you are using Supabase, and deploy. The site is fully static-friendly without Supabase.
+**Live site:** https://neo-land.github.io/colorstack-msu/
+
+The site is a static export (`output: "export"` in `next.config.ts`) deployed to GitHub Pages by [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Every push to `main` rebuilds and redeploys in about two minutes. Check progress under the repo's **Actions** tab.
+
+- The workflow sets `NEXT_PUBLIC_BASE_PATH` to `/<repo-name>` so links and images work under the project sub-path. If you rename the repo, nothing else changes. If you move to a custom domain or Vercel, leave that variable unset and update `url` in `app/seo.ts`.
+- Content from Supabase is read at build time when `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are present. To use them on GitHub Pages, add both as repository secrets and uncomment the two lines in the workflow. Re-run the workflow after editing content in the admin panel so the static pages pick it up.
+- The admin panel works on the static site too: sign-in and data edits happen directly in the browser against Supabase, protected by row-level security.
+
+Vercel also works with no configuration if you prefer it: import the repo and deploy.
 
 ## Scripts
 

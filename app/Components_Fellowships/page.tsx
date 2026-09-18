@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { createOptionalClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import OpportunityTabs, { type OpportunityCard } from "./OpportunityTabs";
 import { fallbackOpportunities } from "./fallbackOpportunities";
 import { siteConfig } from "../seo";
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export default async function OpportunitiesPage() {
-  const supabase = await createOptionalClient();
+  const supabase = createPublicClient();
   let cards: OpportunityCard[] = fallbackOpportunities;
 
   if (supabase) {

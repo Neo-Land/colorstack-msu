@@ -8,8 +8,8 @@ export const siteConfig = {
   university: "Montclair State University",
   universityShort: "Montclair State",
   title: "ColorStack at Montclair State - Black and Latinx Computing Community at MSU",
-  // Placeholder domain. Point this at the real domain once it is registered.
-  url: "https://colorstackmsu.org",
+  // Public URL of the deployed site (GitHub Pages). Change when a custom domain is set up.
+  url: "https://neo-land.github.io/colorstack-msu",
   description:
     "A proposed ColorStack chapter at Montclair State University supporting Black and Latinx computing students with community, mentorship, career resources, and a direct line to ColorStack's national network.",
   // Placeholder inbox. Replace with the chapter's real email.
@@ -57,8 +57,11 @@ export const externalLinks = {
   colorstackWikipedia: "https://en.wikipedia.org/wiki/ColorStack",
 };
 
-export const siteUrl = new URL(siteConfig.url);
+// Trailing slash so Next's metadata resolution keeps the sub-path (e.g. /colorstack-msu/).
+export const siteUrl = new URL(`${siteConfig.url.replace(/\/$/, "")}/`);
 
+/** Joins a site-relative path onto the public URL, preserving any sub-path. */
 export function absoluteUrl(path = "/") {
-  return new URL(path, siteUrl).toString();
+  const base = siteConfig.url.replace(/\/$/, "");
+  return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }

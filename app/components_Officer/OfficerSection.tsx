@@ -1,4 +1,4 @@
-import { createOptionalClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import EBoardCard from "./EBoardCard";
 import { siteConfig } from "../seo";
 
@@ -71,7 +71,7 @@ const fallbackOfficers: Officer[] = [
 ];
 
 export default async function OfficerSection() {
-  const supabase = await createOptionalClient();
+  const supabase = createPublicClient();
   let officers: Officer[] = fallbackOfficers;
 
   if (supabase) {

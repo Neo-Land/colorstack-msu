@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+export const dynamic = "force-static";
 import { absoluteUrl } from "./seo";
 
 const now = new Date();

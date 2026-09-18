@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { createOptionalClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import Image from "next/image";
 import { ArrowUpRight, CalendarDays } from "lucide-react";
 import { externalLinks, siteConfig } from "../seo";
@@ -107,7 +107,7 @@ function safeHref(url: string) {
 }
 
 export default async function ResourcesPage() {
-  const supabase = await createOptionalClient();
+  const supabase = createPublicClient();
   let resourceCards: ResourceCard[] = fallbackResourceCards;
 
   if (supabase) {

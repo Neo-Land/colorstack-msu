@@ -1,4 +1,4 @@
-import { createOptionalClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import HeroSection from "./components_main/HeroSection";
 import WhereWeveLanded from "./components_main/WhereWeveLanded";
 import Mission from "./components_main/Mission";
@@ -19,7 +19,7 @@ const fallbackHeroPhotos = [
 ];
 
 export default async function Home() {
-  const supabase = await createOptionalClient();
+  const supabase = createPublicClient();
 
   const [heroRows, landingLogos, missionRows] = supabase
     ? await Promise.all([

@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { cn } from "@/lib/utils";
 import { Inter, Geist } from "next/font/google";
 import { absoluteUrl, siteConfig, siteUrl } from "./seo";
+import { assetPath } from "@/lib/assetPath";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -42,9 +43,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: siteConfig.logo,
-    shortcut: siteConfig.logo,
-    apple: siteConfig.logo,
+    icon: assetPath(siteConfig.logo),
+    shortcut: assetPath(siteConfig.logo),
+    apple: assetPath(siteConfig.logo),
   },
   openGraph: {
     type: "website",
