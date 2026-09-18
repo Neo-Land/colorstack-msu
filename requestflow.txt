@@ -1,0 +1,23 @@
+
+
+THE FULL REQUEST FLOW
+=====================
+
+User visits /components_Admin
+        |
+middleware.ts — is there a valid session cookie?
+   NO  --> redirect to /Components_Login
+   YES --> let the request through
+        |
+components_Admin/page.tsx — double-check getUser()
+   NO  --> redirect to /Components_Login
+   YES --> render the admin dashboard
+
+
+User submits login form
+        |
+actions.ts — is email === ALLOWED_EMAIL?
+   NO  --> return error "Unauthorized" (Supabase never called)
+   YES --> call supabase.auth.signInWithPassword()
+              FAIL --> return error "Invalid credentials"
+              PASS --> set session cookie --> redirect to /components_Admin
