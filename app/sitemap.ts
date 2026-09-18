@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
-      images: [absoluteUrl("/tiles/community.svg")],
+      images: [absoluteUrl("/photos/campus-quad.jpg")],
     },
     {
       url: absoluteUrl("/proposal"),
@@ -50,14 +50,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
-      images: [absoluteUrl("/tiles/founding-team.svg")],
+      images: [absoluteUrl("/photos/mission-hall.jpg")],
     },
     {
       url: absoluteUrl("/sponsorship"),
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
-      images: [absoluteUrl("/tiles/community.svg")],
+      images: [absoluteUrl("/photos/campus-quad.jpg")],
     },
   ];
 }

@@ -22,9 +22,9 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-slate-200 bg-[#f7f8fb]/95 shadow-[0_10px_35px_-28px_rgba(15,23,42,0.9)] backdrop-blur">
       {/* Desktop */}
-      <div className="hidden md:flex max-w-6xl mx-auto items-center justify-between py-4 px-8">
+      <div className="hidden lg:flex max-w-6xl mx-auto items-center justify-between py-4 px-6 xl:px-8">
         {/* Left links */}
-        <div className="flex flex-1 items-center gap-7">
+        <div className="flex flex-1 items-center gap-5 xl:gap-7">
           {NavbarLinkNames.slice(0, 3).map((link) => (
             <Link key={link.href} href={link.href} className={linkClass}>
               {link.label}
@@ -33,7 +33,7 @@ export default function Navbar() {
         </div>
 
         {/* Center logo + wordmark */}
-        <Link href="/" className="mx-8 flex shrink-0 items-center gap-2">
+        <Link href="/" className="mx-5 flex shrink-0 items-center gap-2 xl:mx-8">
           <Image
             src={siteConfig.logo}
             alt={siteConfig.name}
@@ -45,14 +45,14 @@ export default function Navbar() {
           <span className="text-slate-950 font-bold tracking-tight whitespace-nowrap text-[20px]">
             ColorStack{" "}
             <span className="text-[#D1190D]">
-              <span className="lg:hidden">MSU</span>
-              <span className="hidden lg:inline">Montclair State</span>
+              <span className="xl:hidden">MSU</span>
+              <span className="hidden xl:inline">Montclair State</span>
             </span>
           </span>
         </Link>
 
         {/* Right links + login pill */}
-        <div className="flex flex-1 items-center justify-end gap-7">
+        <div className="flex flex-1 items-center justify-end gap-5 xl:gap-7">
           {NavbarLinkNames.slice(3).map((link) => (
             <Link key={link.href} href={link.href} className={linkClass}>
               {link.label}
@@ -68,7 +68,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile top bar */}
-      <div className="md:hidden flex items-center justify-between px-5 py-3">
+      <div className="lg:hidden flex items-center justify-between px-5 py-3">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src={siteConfig.logo}
@@ -103,7 +103,7 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="md:hidden flex flex-col gap-4 border-t border-slate-200 bg-[#f7f8fb] px-5 pb-4 pt-4 shadow-sm">
+        <div className="lg:hidden flex flex-col gap-4 border-t border-slate-200 bg-[#f7f8fb] px-5 pb-4 pt-4 shadow-sm">
           {NavbarLinkNames.map((link) => (
             <Link
               key={link.href}

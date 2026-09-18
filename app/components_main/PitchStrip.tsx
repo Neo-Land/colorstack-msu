@@ -38,7 +38,7 @@ export default function PitchStrip() {
     <section
       id="why"
       aria-label="Why Montclair State needs a ColorStack chapter"
-      className="w-full px-6 pb-6 md:-translate-y-24 md:pb-0"
+      className="w-full px-5 pb-6 sm:px-6 lg:px-8 lg:pb-10"
     >
       <div className="mx-auto max-w-6xl rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-44px_rgba(15,23,42,0.5)] md:p-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">

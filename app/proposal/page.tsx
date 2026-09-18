@@ -13,8 +13,10 @@ import {
   ShieldCheck,
   Users,
 } from "lucide-react";
+import Image from "next/image";
 import Footer from "../components_main/Footer";
 import { absoluteUrl, externalLinks, siteConfig } from "../seo";
+import { campusPhotos } from "../campusPhotos";
 
 export const metadata: Metadata = {
   title: "Chapter Proposal",
@@ -280,6 +282,27 @@ export default function ProposalPage() {
               Read the draft constitution
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Campus banner */}
+      <section className="px-5 pb-12 sm:px-6">
+        <div className="relative mx-auto aspect-[21/9] max-w-5xl overflow-hidden rounded-2xl shadow-[0_24px_70px_-44px_rgba(15,23,42,0.6)] sm:aspect-[3/1]">
+          <Image
+            src={campusPhotos.green.src}
+            alt={campusPhotos.green.alt}
+            fill
+            sizes="(min-width: 1024px) 1024px, 100vw"
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+          <div className="absolute bottom-4 left-5 right-5 flex flex-wrap items-end justify-between gap-2 sm:bottom-6 sm:left-7 sm:right-7">
+            <p className="text-sm font-bold text-white sm:text-base">{siteConfig.university}, Montclair NJ</p>
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/75">
+              Home of the Red Hawks
+            </p>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight, Check } from "lucide-react";
 import { absoluteUrl, siteConfig } from "../seo";
+import { campusPhotos } from "../campusPhotos";
 
 export const metadata: Metadata = {
   title: "Sponsorship",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     url: "/sponsorship",
     images: [
       {
-        url: "/tiles/community.svg",
+        url: "/photos/campus-quad.jpg",
         width: 1400,
         height: 900,
         alt: "ColorStack at Montclair State",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     title: `Sponsorship | ${siteConfig.name}`,
     description:
       "Support the founding ColorStack chapter at Montclair State University.",
-    images: ["/tiles/community.svg"],
+    images: ["/photos/campus-quad.jpg"],
   },
 };
 
@@ -139,8 +140,8 @@ export default function SponsorshipPage() {
           <div className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_28px_80px_-48px_rgba(15,23,42,0.45)]">
             <div className="absolute left-0 top-0 z-10 h-0.5 w-0 bg-[#D1190D] transition-all duration-500 group-hover:w-full" />
             <Image
-              src="/tiles/community.svg"
-              alt="ColorStack at Montclair State"
+              src={campusPhotos.redBuilding.src}
+              alt={campusPhotos.redBuilding.alt}
               width={1400}
               height={900}
               priority

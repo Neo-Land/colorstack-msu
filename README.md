@@ -45,7 +45,9 @@ Other places with content you will want to personalize:
 - `app/components_Officer/OfficerSection.tsx`: the founding-team roster (or manage it from the admin panel).
 - `app/Components_Fellowships/fallbackOpportunities.ts`: hackathon and program cards. Update `CHECKED_ON` when you re-verify links.
 - `app/proposal/page.tsx`: the roadmap dates assume a Fall 2026 start. The facts and sources are current as of September 2026; confirm enrollment numbers with MSU Institutional Research before quoting them in University materials.
-- `public/tiles/*.svg`: generated placeholder artwork. Replace hero tiles with real photos through the admin panel once the chapter has them. To change the placeholder text, edit and run `node scripts/generate-tiles.mjs`.
+- `app/campusPhotos.ts` and `public/photos/`: campus photography (Creative Commons BY-SA from Wikimedia Commons; see `public/photos/CREDITS.md`). Replace any file and update its caption and credit there. Hero photos uploaded through the admin panel take precedence automatically.
+- Rocky the Red Hawk and the MSU logos are University trademarks, so none are included. Ask University Communications and Marketing for approved imagery, then drop it into `public/photos` and reference it from `app/campusPhotos.ts`.
+- `public/tiles/*.svg`: generated placeholder cards for the Resources page and program cards. To change their text, edit and run `node scripts/generate-tiles.mjs`.
 
 ## Brand
 
@@ -99,4 +101,4 @@ npm run lint    # eslint
 
 ## Credits
 
-Original site architecture and components by the ColorStack Stevens chapter team. ColorStack is a registered trademark of ColorStack, Inc.; this site is a student-led initiative seeking chapter affiliation and is not yet an official chapter.
+Original site architecture and components by the ColorStack Stevens chapter team. Campus photographs by Shane Fleming, Daniel Case, and Adam Moss via Wikimedia Commons under CC BY-SA licenses (full list in `public/photos/CREDITS.md`). ColorStack is a registered trademark of ColorStack, Inc.; this site is a student-led initiative seeking chapter affiliation and is not yet an official chapter.

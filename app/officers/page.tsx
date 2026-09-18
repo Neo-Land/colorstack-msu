@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: "/officers",
     images: [
       {
-        url: "/tiles/founding-team.svg",
+        url: "/photos/mission-hall.jpg",
         width: 1400,
         height: 700,
         alt: "ColorStack at Montclair State founding team",

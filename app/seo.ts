@@ -30,7 +30,7 @@ export const siteConfig = {
     addressCountry: "US",
   },
   logo: "/mainPhotos/colorstack-msu-logo.svg",
-  ogImage: "/tiles/community.svg",
+  ogImage: "/photos/campus-quad.jpg",
 };
 
 /** External links referenced across the site. */

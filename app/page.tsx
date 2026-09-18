@@ -5,18 +5,8 @@ import Mission from "./components_main/Mission";
 import PitchStrip from "./components_main/PitchStrip";
 import Footer from "./components_main/Footer";
 import { absoluteUrl, externalLinks, siteConfig } from "./seo";
-
-/** Built-in hero tiles used until real chapter photos are uploaded via the admin panel. */
-const fallbackHeroPhotos = [
-  { id: "t1", img_path: "/tiles/hero-1.svg", url: "/proposal", height: 520, sort_order: 1 },
-  { id: "t2", img_path: "/tiles/hero-2.svg", url: externalLinks.colorstack, height: 300, sort_order: 2 },
-  { id: "t3", img_path: "/tiles/hero-3.svg", url: externalLinks.msuHispanicInitiatives, height: 380, sort_order: 3 },
-  { id: "t4", img_path: "/tiles/hero-4.svg", url: externalLinks.colorstackWikipedia, height: 460, sort_order: 4 },
-  { id: "t5", img_path: "/tiles/hero-5.svg", url: "/proposal", height: 320, sort_order: 5 },
-  { id: "t6", img_path: "/tiles/hero-6.svg", url: externalLinks.colorstackImpactReport, height: 420, sort_order: 6 },
-  { id: "t7", img_path: "/tiles/hero-7.svg", url: externalLinks.msuSchoolOfComputing, height: 360, sort_order: 7 },
-  { id: "t8", img_path: "/tiles/hero-8.svg", url: "/officers", height: 300, sort_order: 8 },
-];
+import { heroPhotos as defaultHeroPhotos } from "./campusPhotos";
+import type { HeroPhoto } from "./components_main/HeroMosaic";
 
 export default async function Home() {
   const supabase = createPublicClient();
@@ -29,16 +19,15 @@ export default async function Home() {
       ])
     : [null, null, null];
 
-  const heroPhotos =
+  // Photos uploaded through the admin panel replace the built-in campus photos.
+  const heroPhotos: HeroPhoto[] =
     heroRows && heroRows.length > 0
       ? heroRows.map((p) => ({
-          id: p.id as string,
-          img_path: p.img_path as string,
-          url: p.url as string,
-          height: p.height as number,
-          sort_order: p.sort_order as number,
+          src: p.img_path as string,
+          alt: "ColorStack at Montclair State community photo",
+          href: (p.url as string) || undefined,
         }))
-      : fallbackHeroPhotos;
+      : defaultHeroPhotos;
 
   const missionPhotos = Object.fromEntries(
     (missionRows ?? []).map((r) => [r.slot, r.img_path])
@@ -71,9 +60,7 @@ export default async function Home() {
           }),
         }}
       />
-      <div className="md:-translate-y-7 xl:ml-35">
-        <HeroSection items={heroPhotos} />
-      </div>
+      <HeroSection photos={heroPhotos} />
       <PitchStrip />
       <WhereWeveLanded logos={landingLogos && landingLogos.length > 0 ? landingLogos : undefined} />
       <Mission missionPhotos={missionPhotos} />

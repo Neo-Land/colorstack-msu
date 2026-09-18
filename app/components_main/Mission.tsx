@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { campusPhotos } from "../campusPhotos";
 
 interface MissionPhotos {
   eboard?: string;
@@ -15,21 +16,21 @@ const cardDefs = [
     title: "Mission",
     description:
       "Increase the number of Black and Latinx computing graduates at Montclair State who go on to launch rewarding technical careers.",
-    fallback: "/tiles/mission.svg",
+    fallback: campusPhotos.collegeHall.src,
   },
   {
     slot: "strategy" as keyof MissionPhotos,
     title: "Strategy",
     description:
       "Pair on-campus community and programming with ColorStack's national resources so every member is equipped to finish their degree and land a technical job.",
-    fallback: "/tiles/strategy.svg",
+    fallback: campusPhotos.redBuilding.src,
   },
   {
     slot: "vision" as keyof MissionPhotos,
     title: "Vision",
     description:
       "Red Hawks at the forefront of innovation, and a future where Black and Latinx technologists lead the field.",
-    fallback: "/tiles/vision.svg",
+    fallback: campusPhotos.skyline.src,
   },
 ];
 
@@ -49,7 +50,11 @@ const bulletPoints = [
 ];
 
 export default function Mission({ missionPhotos = {} }: { missionPhotos?: MissionPhotos }) {
-  const eboardSrc = missionPhotos.eboard ?? "/tiles/founding-team.svg";
+  const eboardSrc = missionPhotos.eboard ?? campusPhotos.quad.src;
+  const eboardAlt = missionPhotos.eboard
+    ? "ColorStack at Montclair State founding team"
+    : campusPhotos.quad.alt;
+  const eboardCaption = missionPhotos.eboard ? "Founding team" : "Home campus, Montclair NJ";
   const cards = cardDefs.map((c) => ({ ...c, img: missionPhotos[c.slot] ?? c.fallback }));
 
   return (
@@ -79,7 +84,7 @@ export default function Mission({ missionPhotos = {} }: { missionPhotos?: Missio
           <div className="group relative w-full overflow-hidden rounded-xl shadow-[0_24px_70px_rgba(0,0,0,0.18)] ring-1 ring-black/10">
             <Image
               src={eboardSrc}
-              alt="ColorStack at Montclair State founding team"
+              alt={eboardAlt}
               width={1400}
               height={700}
               className="block aspect-[1.86/1] h-auto w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
@@ -87,10 +92,10 @@ export default function Mission({ missionPhotos = {} }: { missionPhotos?: Missio
             />
             <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/80 via-black/30 to-transparent px-7 py-5">
               <p className="text-[0.98rem] font-bold text-white/95">
-                Founding team
+                {eboardCaption}
               </p>
               <span className="text-sm font-semibold text-white/45">
-                2026-2027
+                Founding year 2026-2027
               </span>
             </div>
           </div>

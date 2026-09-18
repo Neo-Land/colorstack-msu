@@ -130,7 +130,16 @@ export default function Footer() {
             officially registered MSU organization or ColorStack chapter.
           </p>
           <p className="text-xs font-medium text-slate-500">
-            Seeking affiliation with the{" "}
+            Campus photos by Shane Fleming, Daniel Case, and Adam Moss via{" "}
+            <a
+              href="https://commons.wikimedia.org/wiki/Category:Montclair_State_University"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 transition-colors hover:text-[#D1190D]"
+            >
+              Wikimedia Commons
+            </a>{" "}
+            (CC BY-SA). Seeking affiliation with the{" "}
             <a
               href={externalLinks.colorstack}
               target="_blank"

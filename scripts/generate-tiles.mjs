@@ -43,22 +43,6 @@ function tile({ file, w, h, lines, sub, variant }) {
 writeFileSync("public/mainPhotos/colorstack-msu-logo.svg",
   `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><rect width="128" height="128" rx="28" fill="${RED}"/><g fill="#ffffff"><rect x="24" y="34" width="80" height="16" rx="8"/><rect x="34" y="56" width="60" height="16" rx="8"/><rect x="44" y="78" width="40" height="16" rx="8"/></g></svg>`);
 
-// Hero masonry tiles. Heights are "height at 400px wide"; HeroSection passes referenceWidth={400}.
-tile({ file: "public/tiles/hero-1.svg", w: 400, h: 520, lines: ["ColorStack", "at Montclair", "State"], sub: "Proposed chapter" });
-tile({ file: "public/tiles/hero-2.svg", w: 400, h: 300, lines: ["Degreed &", "hired."], sub: "The national mission", variant: "dark" });
-tile({ file: "public/tiles/hero-3.svg", w: 400, h: 380, lines: ["HSI since", "2016"], sub: "Montclair State", variant: "light" });
-tile({ file: "public/tiles/hero-4.svg", w: 400, h: 460, lines: ["95 chapters", "27 states"], sub: "ColorStack, Feb 2026" });
-tile({ file: "public/tiles/hero-5.svg", w: 400, h: 320, lines: ["Black &", "Latinx in", "computing"], sub: "Community first", variant: "dark" });
-tile({ file: "public/tiles/hero-6.svg", w: 400, h: 420, lines: ["16,000+", "members"], sub: "FY2025 impact report", variant: "light" });
-tile({ file: "public/tiles/hero-7.svg", w: 400, h: 360, lines: ["Red Hawks", "in tech"], sub: "School of Computing" });
-tile({ file: "public/tiles/hero-8.svg", w: 400, h: 300, lines: ["Join the", "founding", "team"], sub: "Fall 2026", variant: "dark" });
-// Landscape feature tiles
-tile({ file: "public/tiles/founding-team.svg", w: 1400, h: 700, lines: ["Founding team", "photo coming soon"], sub: "ColorStack at Montclair State · 2026-2027", variant: "dark" });
-tile({ file: "public/tiles/community.svg", w: 1400, h: 900, lines: ["ColorStack", "at MSU"], sub: "Founding partners wanted" });
-// Mission cards overlay their own title, so these tiles carry no text.
-tile({ file: "public/tiles/mission.svg", w: 800, h: 600, lines: [], sub: "", variant: "dark" });
-tile({ file: "public/tiles/strategy.svg", w: 800, h: 600, lines: [], sub: "" });
-tile({ file: "public/tiles/vision.svg", w: 800, h: 600, lines: [], sub: "", variant: "light" });
 // Resource tiles
 tile({ file: "public/tiles/resource-apply.svg", w: 1200, h: 630, lines: ["Become a", "national member"], sub: "colorstack.org" });
 tile({ file: "public/tiles/resource-wiki.svg", w: 1200, h: 630, lines: ["ColorStack", "Family Wiki"], sub: "wiki.colorstack.org", variant: "dark" });
